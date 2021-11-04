@@ -13,7 +13,7 @@ const initialForm = {
 const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
 
     const [form, setForm] = useState(initialForm);
-    const {id, nombre, edad, tipo, vacunado, observaciones} = form;
+    const {id, nombre, edad, vacunado, observaciones} = form;
 
     useEffect(() => {
         if(petEdit){
@@ -77,6 +77,7 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
                     type="checkbox"
                     name="vacunado"
                     onChange={handleChange}
+                    checked={vacunado}
                     value={vacunado}/> Vacunado?
                 </label>
                 <br/>
