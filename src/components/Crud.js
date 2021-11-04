@@ -109,6 +109,7 @@ const Crud = () => {
             petEdit={petEdit}
             setPetEdit={setPetEdit}
             tipos={tipos} />
+            <br/>
             {
                 isLoading?<Loader/>:
                 <Tabla

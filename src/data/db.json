@@ -1,10 +1,25 @@
 {
   "tipos": [
-    { "id": 1, "descripcion": "Perro" },
-    { "id": 2, "descripcion": "Gato" },
-    { "id": 3, "descripcion": "Reptil" },
-    { "id": 4, "descripcion": "Pez" },
-    { "id": 5, "descripcion": "Roedor" }
+    {
+      "id": 1,
+      "descripcion": "Perro"
+    },
+    {
+      "id": 2,
+      "descripcion": "Gato"
+    },
+    {
+      "id": 3,
+      "descripcion": "Reptil"
+    },
+    {
+      "id": 4,
+      "descripcion": "Pez"
+    },
+    {
+      "id": 5,
+      "descripcion": "Roedor"
+    }
   ],
   "mascotas": [
     {

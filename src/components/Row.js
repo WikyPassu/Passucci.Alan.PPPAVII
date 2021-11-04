@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Row = ({pet, setMovieEdit, deleteMovie}) => {
+const Row = ({pet, setPetEdit, deletePet}) => {
     const {id, nombre, tipo} = pet;
     return (
         <tr>
@@ -8,8 +8,8 @@ const Row = ({pet, setMovieEdit, deleteMovie}) => {
             <td>{tipo}</td>
             <td>
                 <button >Ver Detalles</button>
-                <button onClick={() => { setMovieEdit(pet) }}>Modificar</button>
-                <button onClick={() => { deleteMovie(id) }}>Eliminar</button>
+                <button onClick={() => { setPetEdit(pet) }}>Modificar</button>
+                <button onClick={() => { deletePet(id) }}>Eliminar</button>
             </td>
         </tr>
     )

@@ -70,7 +70,6 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
                 <br/>
                 <Tipo
                 tipos={tipos}
-                name="tipo"
                 handleChange={handleChange}/>
                 <br/>
                 <label>

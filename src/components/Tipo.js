@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Tipo = ({tipos}) => {
+const Tipo = ({tipos, handleChange}) => {
     return (
-        <select name="select">
+        <select
+        name="tipo"
+        onChange={handleChange}>
             {
                 tipos.map(tipo => {
                     return <option
