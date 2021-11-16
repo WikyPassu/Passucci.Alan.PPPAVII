@@ -21,10 +21,26 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
         }
     }, [petEdit])
 
-    const handleChange = e => {
+    const handleChange = ({target}) => {
         setForm(form => {
-            return { ...form, [e.target.name]: e.target.value };
+            return { ...form, [target.name]: target.value };
         });
+        if(target.name === "vacunado") {
+            if(target.checked){
+                setForm(() => { return { ...form, [target.name]: true } });
+            }
+            else{
+                setForm(() => { return { ...form, [target.name]: false } });
+            }
+        }
+        else{
+            setForm(() => {
+                return {
+                    ...form,
+                    [target.name]: target.value
+                }
+            });
+        }
     };
 
     const handleSubmit = e => {
@@ -50,51 +66,52 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
 
     return (
         <>
-            <h2>{id?"Modificar Mascota":"Agregar Mascota"}</h2>
-            <form onSubmit={handleSubmit}>
-                <input 
-                type="text" 
-                name="nombre" 
-                placeholder="Nombre" 
-                autoComplete="off"
-                onChange={handleChange}
-                value={nombre} />
-                <br/>
-                <input 
-                type="text" 
-                name="edad" 
-                placeholder="Edad" 
-                autoComplete="off"
-                onChange={handleChange}
-                value={edad} />
-                <br/>
-                <Tipo
-                tipos={tipos}
-                handleChange={handleChange}/>
-                <br/>
-                <label>
-                    <input
-                    type="checkbox"
-                    name="vacunado"
-                    onChange={handleChange}
-                    checked={vacunado}
-                    value={vacunado}/> Vacunado?
-                </label>
-                <br/>
-                <textarea
-                name="observaciones"
-                placeholder="Observaciones"
-                onChange={handleChange}
-                value={observaciones}/>
-                <br/>
-                <input 
-                type="submit" 
-                value="Enviar"/>
-                <input 
-                type="reset" 
-                onClick={handleReset}
-                value="Limpiar"/>
-            </form>
+            <h2 className="title is-4">{id?"Modificar Mascota":"Agregar Mascota"}</h2>
+            <div className="columns is-centered">
+                <div className="column is-one-quarter">
+                    <form onSubmit={handleSubmit}>
+                        <input className="input is-link"
+                        type="text" 
+                        name="nombre" 
+                        placeholder="Nombre" 
+                        autoComplete="off"
+                        onChange={handleChange}
+                        value={nombre} />
+                        <input className="input is-link"
+                        type="number" 
+                        name="edad" 
+                        placeholder="Edad"
+                        autoComplete="off"
+                        min="1"
+                        onChange={handleChange}
+                        value={edad} />
+                        <Tipo
+                        tipos={tipos}
+                        handleChange={handleChange}/>
+                        <br/>
+                        <label className="checkbox">
+                            <input
+                            type="checkbox"
+                            name="vacunado"
+                            onChange={handleChange}
+                            checked={vacunado}/> Vacunado
+                        </label>
+                        <textarea className="textarea is-link"
+                        rows="3"
+                        name="observaciones"
+                        placeholder="Observaciones"
+                        onChange={handleChange}
+                        value={observaciones}/>
+                        <button className="button is-success buttonForm"
+                        type="submit" 
+                        value="Enviar">Enviar</button>
+                        <button className="button is-link buttonForm"
+                        type="reset" 
+                        onClick={handleReset}
+                        value="Limpiar">Limpiar</button>
+                    </form>
+                </div>
+            </div>
         </>
     );
 }

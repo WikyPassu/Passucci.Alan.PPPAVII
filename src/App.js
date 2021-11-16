@@ -1,10 +1,9 @@
 import 'bulma/css/bulma.css';
 import './App.css';
-import { Route, Switch } from 'react-router';
 import Home from './pages/Home';
 import Detalle from './pages/Detalle';
 import Error404 from './pages/Error404';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (

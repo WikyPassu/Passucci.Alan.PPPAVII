@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Formulario from './Formulario';
 import Tabla from './Tabla';
-import Loader from './Spinner';
+import Spinner from './Spinner';
 
 const URL_MASCOTAS = "http://localhost:5500/mascotas";
 const URL_TIPOS = "http://localhost:5500/tipos";
@@ -11,6 +12,7 @@ const Crud = () => {
     const [tipos, setTipos] = useState([]);
     const [petEdit, setPetEdit] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         const getPets = async(url) => {
@@ -101,6 +103,10 @@ const Crud = () => {
         }
     };
 
+    const verDetallesPet = id => {
+        history.push("/mascota/"+id);
+    };
+
     return (
         <section>
             <Formulario
@@ -109,11 +115,11 @@ const Crud = () => {
             petEdit={petEdit}
             setPetEdit={setPetEdit}
             tipos={tipos} />
-            <br/>
             {
-                isLoading?<Loader/>:
+                isLoading?<Spinner/>:
                 <Tabla
                 data={pets}
+                verDetallesPet={verDetallesPet}
                 setPetEdit={setPetEdit}
                 deletePet={deletePet} />
             }
