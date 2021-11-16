@@ -4,7 +4,6 @@ import Row from './Row';
 const Tabla = ({data, setPetEdit, deletePet, verDetallesPet}) => {
     return (
         <>
-            <h2 className="title is-4">Lista de Mascotas</h2>
             <table className="table" align="center">
                 <thead>
                     <tr>

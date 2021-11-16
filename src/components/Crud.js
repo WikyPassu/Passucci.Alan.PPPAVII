@@ -25,9 +25,10 @@ const Crud = () => {
                         return [...pets, pet];
                     });
                 });
-                setIsLoading(false);
             } catch (err) {
                 console.error(err.message);
+            } finally{
+                setIsLoading(false);
             }
         };
         const getTipos = async(url) => {
@@ -43,6 +44,9 @@ const Crud = () => {
                 setIsLoading(false);
             } catch (err) {
                 console.error(err.message);
+            }
+            finally{
+                setIsLoading(false);
             }
         };
         getPets(URL_MASCOTAS);
@@ -86,7 +90,7 @@ const Crud = () => {
     };
 
     const deletePet = id => {
-        if(window.confirm("Confirma eliminacion de " + id)){
+        if(window.confirm("¿Confirma eliminacion de " + id + "?")){
             setIsLoading(true);
             fetch(URL_MASCOTAS + "/" + id, {
                 method: "DELETE",
@@ -109,20 +113,28 @@ const Crud = () => {
 
     return (
         <section>
-            <Formulario
-            createPet={createPet}
-            updatePet={updatePet}
-            petEdit={petEdit}
-            setPetEdit={setPetEdit}
-            tipos={tipos} />
-            {
-                isLoading?<Spinner/>:
-                <Tabla
-                data={pets}
-                verDetallesPet={verDetallesPet}
-                setPetEdit={setPetEdit}
-                deletePet={deletePet} />
-            }
+            <div className="columns is-centered">
+                <div className="column is-6">
+                    <Formulario
+                    createPet={createPet}
+                    updatePet={updatePet}
+                    petEdit={petEdit}
+                    setPetEdit={setPetEdit}
+                    tipos={tipos} />
+                </div>
+                <div className="column is-6">
+                    <h2 className="title is-4">Lista de Mascotas</h2>
+                    {
+                        isLoading?
+                        <div className="centradoTabla"><Spinner/></div>:
+                        <Tabla
+                        data={pets}
+                        verDetallesPet={verDetallesPet}
+                        setPetEdit={setPetEdit}
+                        deletePet={deletePet}/>
+                    }
+                </div>
+            </div>
         </section>
     );
 };

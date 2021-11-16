@@ -23,6 +23,10 @@ input{
   margin: 3px;
 }
 
+.select, .select select{ 
+  margin-left: 1px;
+}
+
 label{
   margin: 15px;
 }
@@ -42,4 +46,8 @@ label{
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.centradoTabla{
+  margin-top: 25%;
 }

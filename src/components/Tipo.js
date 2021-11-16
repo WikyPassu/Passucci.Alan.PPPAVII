@@ -1,11 +1,16 @@
 import React from 'react'
 
-const Tipo = ({tipos, handleChange}) => {
+const Tipo = ({tipos, value, handleChange}) => {
     return (
-        <div className="select is-link">
+        <div className="select is-link is-fullwidth">
             <select
             name="tipo"
+            value={value}
             onChange={handleChange}>
+                <option
+                key="-1"
+                value=""
+                >Seleccione tipo</option>
                 {
                     tipos.map(tipo => {
                         return <option

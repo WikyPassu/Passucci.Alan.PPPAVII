@@ -17,9 +17,9 @@ const Detalle = () => {
         .then(mascota=>{
             console.log(mascota);
             setPet(mascota);
-            setIsLoading(false);
         })
-        .catch(err=>console.error(err));
+        .catch(err=>console.error(err))
+        .finally(() => setIsLoading(false));
     }, [id]);
 
     return (
@@ -45,7 +45,6 @@ const Detalle = () => {
                         <Link to="/">Volver</Link>
                     </>
                 }
-                
             </div>
         </>
     );

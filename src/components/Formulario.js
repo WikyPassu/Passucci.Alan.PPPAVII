@@ -13,7 +13,7 @@ const initialForm = {
 const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
 
     const [form, setForm] = useState(initialForm);
-    const {id, nombre, edad, vacunado, observaciones} = form;
+    const {id, nombre, edad, tipo, vacunado, observaciones} = form;
 
     useEffect(() => {
         if(petEdit){
@@ -22,9 +22,6 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
     }, [petEdit])
 
     const handleChange = ({target}) => {
-        setForm(form => {
-            return { ...form, [target.name]: target.value };
-        });
         if(target.name === "vacunado") {
             if(target.checked){
                 setForm(() => { return { ...form, [target.name]: true } });
@@ -32,6 +29,9 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
             else{
                 setForm(() => { return { ...form, [target.name]: false } });
             }
+        }
+        else if(target.name === "edad"){
+            setForm(() => { return { ...form, [target.name]: parseInt(target.value) } });
         }
         else{
             setForm(() => {
@@ -46,7 +46,7 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log("Enviando...");
-        if(!nombre || !edad){
+        if(!nombre || !edad || !tipo){
             alert("Faltan datos...");
             return;
         }
@@ -68,10 +68,10 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
         <>
             <h2 className="title is-4">{id?"Modificar Mascota":"Agregar Mascota"}</h2>
             <div className="columns is-centered">
-                <div className="column is-one-quarter">
+                <div className="column is-6">
                     <form onSubmit={handleSubmit}>
                         <input className="input is-link"
-                        type="text" 
+                        type="text"
                         name="nombre" 
                         placeholder="Nombre" 
                         autoComplete="off"
@@ -87,6 +87,7 @@ const Formulario = ({createPet, updatePet, petEdit, setPetEdit, tipos}) => {
                         value={edad} />
                         <Tipo
                         tipos={tipos}
+                        value={tipo}
                         handleChange={handleChange}/>
                         <br/>
                         <label className="checkbox">

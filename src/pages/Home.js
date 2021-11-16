@@ -4,10 +4,12 @@ import Header from '../components/Header';
 
 const Home = () => {
     return (
-        <div className="container">
+        <>
             <Header titulo="CRUD Mascotas"/>
-            <Crud />
-        </div>
+            <div className="container">
+                <Crud />
+            </div>
+        </>
     );
 };
 
